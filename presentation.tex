@@ -271,22 +271,16 @@ Two problems:
   \frametitle{Example 1 - Root finding (cont)}
 
 \begin{small}  
-\begin{description}
-  \item[First problem] escape to NaN
-\end{description}
+ First problem:  escape to NaN
 \begin{itemize}
   \item Long and painful history debating C99x Annex G
   \item Desire: clear, self-contained, open documentation
   \item Desire: simple, performant code
-  \item Result: do not really try to compactify; use standard definitions
-and let chips fall where they may
+  \item Result: use standard definitions and let NaNs propagate
 \end{itemize}
-\begin{description}
-  \item[Second problem] hanging
-\end{description}
+Second problem: hanging
 \begin{itemize}
-  \item Ongoing debate about what to make defaults, whether to have defaults for number of
-function evaluations, function value accuracy, etc...
+  \item Ongoing debate about what to make defaults, whether to have defaults at all...
   \item Ease of use vs foot-shooting potential
   \item OO vs procedural / struct / primitives design
 \end{itemize}
