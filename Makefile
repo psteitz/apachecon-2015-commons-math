@@ -24,3 +24,5 @@ $(BASE).pdf: $(BASE).tex $(FIGURES)
 
 clean:
 	rm -f *.aux *.log *.nav *.out *.pdf *.snm *.toc *.vrb
+	rm -rf _minted-presentation
+

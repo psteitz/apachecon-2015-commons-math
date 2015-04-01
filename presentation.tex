@@ -427,7 +427,6 @@ Could be both answers are wrong...
 \begin{small}
 Another example where concurrent execution would be natural...
 \end{small}
-\\
 \begin{minted}[xleftmargin=10pt,fontsize=\scriptsize,linenos=false]{java}
 // initialize a new genetic algorithm
 GeneticAlgorithm ga = new GeneticAlgorithm(
@@ -505,7 +504,8 @@ Question:  What happens if design matrix is singular?
   \frametitle{Example 6 - OLS regression (cont)}
 
 \begin{small}
-\textbf{Answer:} if it is "exactly" singular, SingularMatrixException \\~\\
+\textbf{Answer:} if it is "exactly" singular, \mintinline{latex}{SingularMatrixException}
+\\~\\
 If is near-singular, garbage out \\
 So make singularity threshold configurable:
 \begin{minted}[xleftmargin=10pt,fontsize=\scriptsize,linenos=false]{java}
@@ -523,8 +523,8 @@ What if we change underlying impl?
 \begin{frame}[fragile]
   \frametitle{Example 7 - Rank correlation}
 
-Given two double arrays x[] and y[], we want a statistical measure of how well their rank
-orderings match. \\ ~ \\
+Given two double arrays \mintinline{latex}{x[]} and \mintinline{latex}{y[]}, we want
+a statistical measure of how well their rank orderings match. \\ ~ \\
 Use Spearman's rank correlation coefficient.
 
 \begin{minted}[xleftmargin=10pt,fontsize=\scriptsize,linenos=false]{java}
@@ -634,12 +634,12 @@ Maven:
 </dependency>
 \end{minted}
 
-Download:
-
+Download:\\
+\begin{small}
 \url{http://commons.apache.org/math/download_math.cgi} \\
-
-Watch for new versions!
-            
+\end{small}
+\\
+Watch for new versions!           
 \end{frame}
 
 %----------- slide --------------------------------------------------%
@@ -673,7 +673,7 @@ Watch for new versions!
 
 %----------- slide --------------------------------------------------%
 \begin{frame}
-  \frametitle{The End!}
+  \frametitle{}
 
 \begin{itemize}
   \item Questions?
