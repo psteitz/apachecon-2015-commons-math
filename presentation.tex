@@ -493,7 +493,6 @@ x[5] = new double[]{0, 0, 0, 0, 6.0};
 regression.newSample(y, x);
 double[] beta = regression.estimateRegressionParameters();       
 double[] residuals = regression.estimateResiduals();
-double[][] parametersVariance = regression.estimateRegressionParametersVariance();
 double rSquared = regression.calculateRSquared();
 double sigma = regression.estimateRegressionStandardError();
 \end{minted}
@@ -506,15 +505,15 @@ Question:  What happens if design matrix is singular?
   \frametitle{Example 6 - OLS regression (cont)}
 
 \begin{small}
-\begin{description}
-  \item[Answer] if it is "exactly" singular, SingularMatrixException
-\end{description}
+\textbf{Answer:} if it is "exactly" singular, SingularMatrixException \\~\\
 If is near-singular, garbage out \\
 So make singularity threshold configurable:
 \begin{minted}[xleftmargin=10pt,fontsize=\scriptsize,linenos=false]{java}
-OLSMultipleLinearRegression regression = new OLSMultipleLinearRegression(threshHold);
+OLSMultipleLinearRegression regression =
+     new OLSMultipleLinearRegression(threshHold);
 \end{minted}
 What exactly is this threshHold? \\
+What should exception error message say? \\
 How to doc it? \\
 What if we change underlying impl?
 \end{small}
