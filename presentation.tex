@@ -36,6 +36,9 @@
 \newcommand{\fmmedium}[1]{\color{orange}{#1}}
 \newcommand{\fmbad}[1]{\color{red}{#1}}
 
+%---- Copy the frame title color --------------------------%
+\newcommand{\fblue}[1]{\usebeamercolor[fg]{frametitle}{#1}}
+
 \newcommand{\newauthor}[2]{
   \parbox{0.26\textwidth}{
     \texorpdfstring
@@ -49,7 +52,7 @@
 }
 
 \definecolor{links}{HTML}{2A1B81}
-\hypersetup{colorlinks,linkcolor=cyan,urlcolor=magenta}
+\hypersetup{colorlinks,linkcolor=cyan,urlcolor=blue}
 
 \newcommand{\schwa}{\raisebox{1ex}{\begin{turn}{180}e\end{turn}}}
 
@@ -118,19 +121,24 @@
 
 \begin{columns}
 \begin{column}{.5\textwidth}
-Come join us! \\
- Code is interesting! \\
- Math is interesting! \\
- Bugs are interesting! \\
-People are interesting! \\
-Come join us! \\
+\textbf{\fblue{Come join us!}}
+\\
+\setbeamertemplate{itemize items}[default]
+\begin{itemize}
+\item Code is interesting!
+\item Math is interesting!
+\item Bugs are interesting!
+\item People are interesting!
+\end{itemize}
+\\
+\textbf{\fblue{Come join us!}} \\
 \end{column}
 \begin{column}{.5\textwidth}\raggedleft
 \includegraphics[width=6cm]{commons-logo.png}\\~\\
 \includegraphics[width=5cm]{math.jpg}
 \end{column}
 \end{columns}
-\\
+\\~\\
 \url{http://commons.apache.org/math}
 \end{frame}
 
