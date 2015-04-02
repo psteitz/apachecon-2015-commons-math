@@ -552,10 +552,9 @@ What if one of the arrays contains NaNs?
 
 \begin{small}
 \begin{itemize}
-\item As of 3.4.1, by default ties are averaged and the presence of NaN causes RTE
-\item Both are configurable, by supplying a RankingAlgorithm to the SpearmansCorrelation
-constructor
-\item RankingAlgorithm consists of a ranking implementation with configurable
+\item As of 3.4.1, by default ties are averaged and NaNs causes RTE
+\item Both are configurable via RankingAlgorithm constructor argument
+\item RankingAlgorithm is a ranking implementation plus
 \begin{itemize}
   \item TiesStrategy - what ranks to assign to tied values
   \item NaNStrategy - what to do with NaN values
@@ -564,8 +563,7 @@ constructor
 \end{itemize}
 Problems: 
 \begin{enumerate}
-\item What if user gives Spearman's constructor a NaturalRanking with the NaN strategy
-that says remove NaNs? 
+\item What if user supplies a NaturalRanking with the NaN strategy that says remove NaNs? 
 \item How to doc clearly and completely?
 \end{enumerate}
 \end{small}
