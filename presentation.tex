@@ -23,18 +23,10 @@
   \vskip0pt%
 }
 
-%\useoutertheme[footline=authortitle]{miniframes}
-
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\usepackage{rotating} % for defining \schwa
 \usepackage{color}
 \usepackage{minted}
-\usepackage{longtable}
-
-\newcommand{\fmgood}[1]{\color{green}{#1}}
-\newcommand{\fmmedium}[1]{\color{orange}{#1}}
-\newcommand{\fmbad}[1]{\color{red}{#1}}
 
 %---- Copy the frame title color --------------------------%
 \newcommand{\fblue}[1]{\usebeamercolor[fg]{frametitle}{#1}}
@@ -51,10 +43,7 @@
   }
 }
 
-\definecolor{links}{HTML}{2A1B81}
 \hypersetup{colorlinks,linkcolor=cyan,urlcolor=blue}
-
-\newcommand{\schwa}{\raisebox{1ex}{\begin{turn}{180}e\end{turn}}}
 
 \AtBeginSection[]{
   \begin{frame}
