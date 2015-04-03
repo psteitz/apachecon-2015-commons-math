@@ -394,16 +394,19 @@ Question: how to distribute instances / workload?
 \begin{frame}
   \frametitle{Threading and workload management}
 
-\\
+\textbf{Questions:}
+
 \begin{enumerate}
 \item Should we implement multi-threaded algorithms?
 \item How can we be more friendly for Hadoop / other distributed compute environments?
 \end{enumerate}
 \\
-\\
-So far (as of 3.4.1), we have not done 1. \\
-So far, answer to 2 has been "leave it to users." \\
-Could be both answers are wrong...
+\setbeamertemplate{itemize items}[default]
+\begin{itemize}
+\item So far (as of 3.4.1), we have not done 1. 
+\item So far, answer to 2 has been "leave it to users." 
+\end{itemize}
+\fblue{Could be both answers are wrong...}
 \end{frame}
 
 %----------- slide --------------------------------------------------%
@@ -496,12 +499,15 @@ If is near-singular, garbage out \\
 So make singularity threshold configurable:
 \begin{minted}[xleftmargin=10pt,fontsize=\scriptsize,linenos=false]{java}
 OLSMultipleLinearRegression regression =
-     new OLSMultipleLinearRegression(threshHold);
+     new OLSMultipleLinearRegression(threshold);
 \end{minted}
-What exactly is this threshHold? \\
-What should exception error message say? \\
-How to doc it? \\
-What if we change underlying impl?
+\setbeamertemplate{itemize items}[default]
+\begin{itemize}
+\item What exactly is this threshold?
+\item What should exception error message say?
+\item How to doc it?
+\item What if we change underlying impl?
+\end{itemize}
 \end{small}
 \end{frame}
 
