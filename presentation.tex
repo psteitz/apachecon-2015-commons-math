@@ -500,7 +500,7 @@ Question:  What happens if design matrix is singular?
 \begin{small}
 \textbf{Answer:} if it is "exactly" singular, \mintinline{latex}{SingularMatrixException}
 \\~\\
-If is near-singular, garbage out \\
+If it is near-singular, garbage out \\
 So make singularity threshold configurable:
 \begin{minted}[xleftmargin=10pt,fontsize=\scriptsize,linenos=false]{java}
 OLSMultipleLinearRegression regression =
@@ -670,7 +670,44 @@ try {
 \end{enumerate}
 \end{small}
 \end{frame}
- 
+
+%----------- slide --------------------------------------------------%
+\begin{frame}[fragile]
+  \frametitle{Example 10 - Geometry} 
+
+\begin{small}
+Calculate the convex hull and enclosing ball of a set of 2D points:
+
+\begin{minted}[xleftmargin=10pt,fontsize=\scriptsize,linenos=false]{java}
+List<Vector2D> points = ...
+ConvexHullGenerator2D generator = new MonotoneChain(true, 1e-6);
+ConvexHull2D hull = generator.generate(points);
+
+Encloser<Euclidean2D, Vector2D> encloser =
+  new WelzlEncloser<Euclidean2D, Vector2D>(1e-6, new DiskGenerator());
+EnclosingBall<Euclidean2D, Vector2D> ball = encloser.enclose(points);
+\end{minted}
+\end{small}
+
+\\
+\begin{columns}
+\begin{column}{.5\textwidth}
+\begin{small}
+Problems:
+\begin{enumerate}
+\item algorithms are prone to numerical problems
+\item important to specify a meaningful tolerance, but depends on input data
+\item does it make sense to support a default tolerance?
+\end{enumerate}
+\end{small}
+\end{column}
+\begin{column}{.5\textwidth}\raggedleft
+\includegraphics[width=4cm]{geometry.png}
+\end{column}
+\end{columns}
+
+\end{frame}
+
 %----TODO: Nice summary slide reinforcing themes from problems-------%
 %--------------------------------------------------------------------%
 \section[Getting involved]{Get Involved!}
