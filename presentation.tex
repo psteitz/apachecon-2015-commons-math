@@ -300,6 +300,7 @@ same underlying probability distribution?
 double[] s1 = ... 
 double[] s2 = ...
 KolmogorovSmirnovTest test = new KolmogorovSmirnovTest();
+
 // Compute p-value for test
 double pValue = test.kolmogorovSmirnovTest(s1, s2);
 
@@ -452,8 +453,8 @@ Question: how to distribute "evolve" workload?
 \begin{small}
 Three ways to do it
 \begin{description}
-  \item[OLSMultipleRegression (stat.regression)] in-memory OLS
-  \item[MillerUpdatingRegression (stat.regression)] streaming OLS
+  \item[OLSMultipleRegression (stat.regression)] in-memory
+  \item[MillerUpdatingRegression (stat.regression)] streaming
   \item[LevenbergMarquardtOptimizer (fitting.leastsquares)] in-memory
 \end{description}
 \begin{enumerate}
@@ -472,6 +473,8 @@ Three ways to do it
 Simplest, most common:
 \begin{minted}[xleftmargin=10pt,fontsize=\scriptsize,linenos=false]{java}
 OLSMultipleLinearRegression regression = new OLSMultipleLinearRegression();
+
+// Load data
 double[] y = new double[]{11.0, 12.0, 13.0, 14.0, 15.0, 16.0};
 double[] x = new double[6][];
 x[0] = new double[]{0, 0, 0, 0, 0};
@@ -479,13 +482,15 @@ x[1] = new double[]{2.0, 0, 0, 0, 0};
 ...
 x[5] = new double[]{0, 0, 0, 0, 6.0};          
 regression.newSample(y, x);
+
+// Estimate model
 double[] beta = regression.estimateRegressionParameters();       
 double[] residuals = regression.estimateResiduals();
 double rSquared = regression.calculateRSquared();
 double sigma = regression.estimateRegressionStandardError();
 \end{minted}
-\end{small}
 Question:  What happens if design matrix is singular?
+\end{small}
 \end{frame}
 
 %----------- slide --------------------------------------------------%
