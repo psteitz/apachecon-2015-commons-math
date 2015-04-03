@@ -583,9 +583,8 @@ gen.nextBytes(bytes);
   
 High-level example:
 
-\begin{minted}[xleftmargin=10pt,fontsize=\scriptsize,linenos=false]{java}
- // Create a RandomDataGenerator instance using a Mersenne Twister 
- // Seeded with the current time plus system identity hashcode of twister
+\begin{minted}[xleftmargin=10pt,fontsize=\footnotesize,linenos=false]{java}
+ // Create a RandomDataGenerator using a Mersenne Twister 
  RandomDataGenerator gen = 
       new RandomDataGenerator(new MersenneTwister());
       
@@ -594,14 +593,74 @@ High-level example:
  \end{minted}
 
 Problems:
+\begin{small}
 \begin{enumerate}
-\item Well generators (used as defaults a lot) have some initialization overhead.  How
-/ when to take this hit
+\item Well generators (used as defaults a lot) have some initialization overhead.
+How / when to take this hit
 \item Distribution classes also have sample() methods, but that makes them dependent on
 generators
 \end{enumerate}
+\end{small}
 \end{frame}
 
+%----------- slide --------------------------------------------------%
+\begin{frame}[fragile]
+  \frametitle{Example 9 - Linear Programming} 
+
+\begin{small}
+Maximize \(7x_1 + 3x_2\) subject to \\
+\(3x_1 - 5x_3 \leq 0\) \\
+\(2x_1 -5x_4 \leq 0\) \\
+... (more constraints) \\
+
+\begin{minted}[xleftmargin=10pt,fontsize=\scriptsize,linenos=false]{java}
+LinearObjectiveFunction f = 
+  new LinearObjectiveFunction(new double[] { 7, 3, 0, 0 }, 0 );
+
+List<LinearConstraint> constraints = new ArrayList<LinearConstraint>();
+constraints.add( new LinearConstraint(new double[] { 3, 0, -5, 0 },
+                                      Relationship.LEQ, 0.0));  
+constraints.add(new LinearConstraint(new double[] { 2, 0, 0, -5 },
+                                      Relationship.LEQ, 0.0));
+...
+SimplexSolver solver = new SimplexSolver();
+PointValuePair solution = solver.optimize(new MaxIter(100), f,
+                          new LinearConstraintSet(constraints),
+                          GoalType.MAXIMIZE,
+                          new NonNegativeConstraint(true));
+\end{minted}
+\end{small}
+\end{frame}
+
+%----------- slide --------------------------------------------------%
+\begin{frame}[fragile]
+  \frametitle{Example 9 - Linear Programming (cont)} 
+\\ 
+\begin{small}
+\textbf{Question:} What happens if the algorithm does not converge? \\
+\textbf{Answer:} \mintinline{latex}{TooManyIterationsException} \\~\\
+What if I want to know the last \mintinline{latex}{PointValuePair}?
+
+\begin{minted}[xleftmargin=10pt,fontsize=\scriptsize,linenos=false]{java}
+SolutionCallback callback = new SolutionCallback();
+try {
+    PointValuePair solution = solver.optimize(new MaxIter(100), f,
+                          new LinearConstraintSet(constraints),
+                          GoalType.MAXIMIZE,
+                          new NonNegativeConstraint(true), callback);
+} catch (TooManyIterationsException ex) {
+	PointValuePair lastIterate = callback.getSolution();
+}
+\end{minted}
+
+(Ugly) Alternatives:
+\begin{enumerate}
+\item Don't throw, but embed some kind of status object in return
+\item Shove context data in exception messages
+\end{enumerate}
+\end{small}
+\end{frame}
+ 
 %----TODO: Nice summary slide reinforcing themes from problems-------%
 %--------------------------------------------------------------------%
 \section[Getting involved]{Get Involved!}
