@@ -57,9 +57,6 @@
   \end{frame}
 }
 
-%gets rid of bottom navigation bars
-%\setbeamertemplate{footline}[page number]{}
-
 %gets rid of navigation symbols
 \setbeamertemplate{navigation symbols}{}
 
@@ -95,7 +92,7 @@
   \frametitle{Goals}
 
 \begin{itemize}
-  \item 100\% pure, self-contained Java
+  \item Self-contained, ASL-licensed Java
   \item Provide simple solutions to common problems
   \item Implement standard, well-documented algorithms
   \item Balance ease of use and good design
@@ -104,6 +101,9 @@
 \end{itemize}
 
 \end{frame}
+
+%----------- slide --------------------------------------------------%
+\input{in_numbers.tex}
 
 %----------- slide --------------------------------------------------%
 \begin{frame}
@@ -134,6 +134,7 @@
 
 %--------------------------------------------------------------------%
 \section[Overview]{Quick Tour}
+
 %----------- slide --------------------------------------------------%
 \begin{frame}
   \frametitle{}
@@ -708,7 +709,23 @@ Problems:
 
 \end{frame}
 
-%----TODO: Nice summary slide reinforcing themes from problems-------%
+%----------- slide --------------------------------------------------%
+\begin{frame}
+  \frametitle{Key Challenges Recap...}
+
+\begin{small}
+\begin{itemize}
+\item Balancing performance, mathematical correctness and algorithm fidelity
+\item Fully documenting behavior and API contracts
+\item Steering users toward good solutions as simply as possible
+\item Balancing OO design and internal reuse with approachability 
+\item Obscure and abandoned contributions 
+\item Reference implementations and / or data for validation
+\item Backward compatibility vs API improvement
+\end{itemize}
+\end{small}
+\end{frame}
+
 %--------------------------------------------------------------------%
 \section[Getting involved]{Get Involved!}
 %----------- slide --------------------------------------------------%
@@ -718,6 +735,7 @@ Problems:
 Maven:
 
 \begin{minted}[xleftmargin=10pt,fontsize=\small,linenos=false]{xml}
+
 <dependency>
 	<groupId>org.apache.commons</groupId>
 	<artifactId>commons-math3</artifactId>
