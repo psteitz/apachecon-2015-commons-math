@@ -82,8 +82,18 @@
 \begin{itemize}
   \item Commons Math Overview
   \item Examples and problems
+  \item Lessons learned
   \item Getting involved
 \end{itemize}
+
+\end{frame}
+
+%----------- slide --------------------------------------------------%
+\begin{frame}
+  \frametitle{Disclaimer}
+
+Apache Commons Math is a community-based, open development project. \\~\\
+The discussion of problems and challenges to follow represents one contributor's views.
 
 \end{frame}
 
@@ -622,7 +632,7 @@ generators
 Maximize \(7x_1 + 3x_2\) subject to \\
 \(3x_1 - 5x_3 \leq 0\) \\
 \(2x_1 -5x_4 \leq 0\) \\
-... (more constraints) \\
+... (more constraints)
 
 \begin{minted}[xleftmargin=10pt,fontsize=\scriptsize,linenos=false]{java}
 LinearObjectiveFunction f = 
@@ -709,6 +719,8 @@ Problems:
 
 \end{frame}
 
+%--------------------------------------------------------------------%
+\section[Getting involved]{Lessons Learned}
 %----------- slide --------------------------------------------------%
 \begin{frame}
   \frametitle{Key Challenges Recap...}
@@ -722,6 +734,24 @@ Problems:
 \item Obscure and abandoned contributions 
 \item Reference implementations and / or data for validation
 \item Backward compatibility vs API improvement
+\end{itemize}
+\end{small}
+\end{frame}
+
+%----------- slide --------------------------------------------------%
+\begin{frame}
+  \frametitle{Some lessons learned}
+
+\begin{small}
+\begin{itemize}
+\item Let practical use cases drive performance / accuracy / fidelity decisions
+\item Be careful with ports and large contributions
+\item Limit public API to what users need
+\item Prefer standard definitions and algorithms
+\item Take time to fully research bugs and patches
+\item Constantly improve javadoc and User Guide
+\item Try to avoid compatibility breaks, but bundle into major
+version releases when you have to
 \end{itemize}
 \end{small}
 \end{frame}
