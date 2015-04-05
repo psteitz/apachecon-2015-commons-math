@@ -639,18 +639,15 @@ Problems:
 \begin{frame}[fragile]
   \frametitle{Example 8 - Random Numbers}
   
-\begin{small}
-\begin{itemize}  
-\item Commons Math provides alternatives to the JDK PRNG and a pluggable framework
+\begin{small} 
+Commons Math provides alternatives to the JDK PRNG and a pluggable framework
+\setbeamertemplate{itemize items}[default]
 \begin{itemize}
 \item RandomGenerator interface is like j.u.Random
 \item All random data generation within Commons Math is pluggable
 \end {itemize}
-\item Well generator is usually the default
-\end{itemize}
-
+Well generator is usually the default \\
 Low-level example:
-
 \begin{minted}[xleftmargin=10pt,fontsize=\scriptsize,linenos=false]{java}
 // Allocate an array to hold random bytes
 byte[] bytes = new byte[20];
