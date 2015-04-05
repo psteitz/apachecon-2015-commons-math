@@ -93,7 +93,8 @@
   \frametitle{Disclaimer}
 
 Apache Commons Math is a community-based, open development project. \\~\\
-The discussion of problems and challenges to follow represents one contributor's views.
+The discussion of problems, challenges and lessons learned represents one
+contributor's views.
 
 \end{frame}
 
@@ -364,18 +365,83 @@ Works OK in this case, but...
 
 %----------- slide --------------------------------------------------%
 \begin{frame}[fragile]
-  \frametitle{Example 3 - Multivariate optimization (cont)}
-  
-%-- ADD: Difficulty in stabilizing optimization API and how to steer users --%
+  \frametitle{Example 3 - Optimization (cont)}
+
+\begin{small}
+\\
+{\fblue User question:} How do I choose among the available optimizers? \\
+{\fblue Developer question:} How do we define a consistent API? \\
+
+Another solution for Example 3:
+
+\begin{minted}[xleftmargin=8pt,fontsize=\scriptsize,linenos=false]{java}
+
+BOBYQAOptimizer optim = new BOBYQAOptimizer(4);
+PointValuePair result = optim.optimize(new MaxEval(1000),
+                        new ObjectiveFunction(f),
+                        GoalType.MINIMIZE,
+                        new InitialGuess(new double[] {-1, 1}),
+                        SimpleBounds.unbounded(2));
+\end{minted}
+\\
+Note additional parameter to optimize.
+
+\end{small}
+\end{frame}
+
+%----------- slide --------------------------------------------------%
+\begin{frame}[fragile]
+  \frametitle{Example 3 - Optimization (cont)}
+
+\begin{small}
+To allow arbitrary parameter lists, we settled on varargs...
+
+\begin{minted}[xleftmargin=10pt,fontsize=\scriptsize,linenos=false]{java}
+public abstract class BaseOptimizer<PAIR>
+...
+/**
+ * Stores data and performs the optimization.
+ * 
+ * The list of parameters is open-ended so that sub-classes can extend it
+ * with arguments specific to their concrete implementations.
+ * 
+ * When the method is called multiple times, instance data is overwritten
+ * only when actually present in the list of arguments: when not specified,
+ * data set in a previous call is retained (and thus is optional in
+ * subsequent calls).
+...
+ * @param optData Optimization data.
+...
+ */
+public PAIR optimize(OptimizationData... optData)
+\end{minted} 
+\end{small}
+\end{frame}
+
+%----------- slide --------------------------------------------------%
+\begin{frame}[fragile]
+  \frametitle{Example 3 - Optimization (cont)}
+
+Some additional challenges:
+
+\begin{small}
+\begin{itemize}
+\item Stochastic algorithms are tricky to test
+\item FORTRAN ports create awful Java code, but "fixing" can create discrepancies
+\item BOBYQAOptimizer port has never really been fully supported
+\item Answering user questions requires expertise and time
+\end{itemize} 
+\end{small}
 \end{frame}
 %----------- slide --------------------------------------------------%
 \begin{frame}[fragile]
   \frametitle{Example 4 - Aggregated statistics}
 
 \begin{small}
+\\
 Problem: Aggregate summary statistics across multiple processes
 \end{small}
-\\
+
 \begin{minted}[xleftmargin=10pt,fontsize=\scriptsize,linenos=false]{java}
 // Create a collection of stats collectors
 Collection<SummaryStatistics> aggregate =
@@ -392,7 +458,7 @@ StatisticalSummary aggregatedStats =
      AggregateSummaryStatistics.aggregate(aggregate);
 
 \end{minted}
-\\
+
 \begin{small}
 \begin{itemize}
 \item SummaryStatistics instances handle large data streams
@@ -767,9 +833,9 @@ Maven:
 \begin{minted}[xleftmargin=10pt,fontsize=\small,linenos=false]{xml}
 
 <dependency>
-	<groupId>org.apache.commons</groupId>
-	<artifactId>commons-math3</artifactId>
-	<version>3.4.1</version>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-math3</artifactId>
+    <version>3.4.1</version>
 </dependency>
 \end{minted}
 
@@ -785,6 +851,7 @@ Watch for new versions!
 \begin{frame}
   \frametitle{Links}
 
+\begin{small}
 \begin{itemize}
   \item Project homepage: \url{http://commons.apache.org/math/}
   \item Issue tracker: \url{https://issues.apache.org/jira/browse/MATH}
@@ -792,7 +859,7 @@ Watch for new versions!
   e-mail subject: [math]
   \item Wiki: \url{http://wiki.apache.org/commons/MathWishList}
 \end{itemize}
-
+\end{small}
 \end{frame}
 
 %----------- slide --------------------------------------------------%
