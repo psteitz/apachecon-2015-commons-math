@@ -394,7 +394,7 @@ Note additional parameter to optimize.
   \frametitle{Example 3 - Optimization (cont)}
 
 \begin{small}
-To allow arbitrary parameter lists, we settled on varargs...
+To allow arbitrary parameter lists, we settled on varargs ...
 
 \begin{minted}[xleftmargin=10pt,fontsize=\scriptsize,linenos=false]{java}
 public abstract class BaseOptimizer<PAIR>
@@ -418,6 +418,41 @@ public PAIR optimize(OptimizationData... optData)
 \end{small}
 \end{frame}
 
+%----------- slide --------------------------------------------------%
+\begin{frame}
+  \frametitle{Optimization (cont) - version 4 direction}
+
+Refactor all classes in "o.a.c.m.optim"
+
+\begin{itemize}
+\item Phase out "OptimizationData"
+\item Use "fluent" API
+\item Separate optimization problem from optimization procedure
+\end{itemize}
+\end{frame}
+
+%----------- slide --------------------------------------------------%
+\begin{frame}[fragile]
+  \frametitle{Optimization (cont) - version 4 direction}
+  
+\begin{small}
+New classes/interfaces in "o.a.c.m.fitting.leastsquares":
+\setbeamertemplate{itemize items}[default]
+\begin{itemize}
+\item LeastSquaresProblem and LeastSquaresProblem.Evaluation
+\item LeastSquaresOptimizer and LeastSquaresOptimizer.Optimum
+\item LeastSquaresFactory and LeastSquaresBuilder
+\end{itemize}
+Usage:
+\begin{minted}[xleftmargin=10pt,fontsize=\scriptsize,linenos=false]{java}
+LeastSquaresProblem problem = LeastSquaresFactory.create( /* ... */ );
+LeastSquaresOptimizer optim = new LevenbergMarquardtOptimizer( /* ... */ );
+Optimum result = optim.optimize(problem);
+\end{minted}
+
+Yet to be done (before next major release?): Refactor all the other optimizers. 
+\end{small}
+\end{frame}
 %----------- slide --------------------------------------------------%
 \begin{frame}[fragile]
   \frametitle{Example 3 - Optimization (cont)}
@@ -646,7 +681,6 @@ Commons Math provides alternatives to the JDK PRNG and a pluggable framework
 \item RandomGenerator interface is like j.u.Random
 \item All random data generation within Commons Math is pluggable
 \end {itemize}
-Well generator is usually the default \\
 Low-level example:
 \begin{minted}[xleftmargin=10pt,fontsize=\scriptsize,linenos=false]{java}
 // Allocate an array to hold random bytes
