@@ -660,14 +660,15 @@ What if one of the arrays contains NaNs?
 
 \begin{small}
 \begin{itemize}
-\item As of 3.4.1, by default ties are averaged and NaNs causes RTE
+\item As of 3.4.1, by default ties are averaged and NaNs cause RTE
 \item Both are configurable via RankingAlgorithm constructor argument
 \item RankingAlgorithm is a ranking implementation plus
 \begin{itemize}
   \item TiesStrategy - what ranks to assign to tied values
   \item NaNStrategy - what to do with NaN values
 \end{itemize}
-\item Default in Spearman's is natural ranking on doubles with ties averaged and NaNs disallowed
+\item Default in Spearman's is natural ranking on doubles with ties averaged
+and NaNs disallowed
 \end{itemize}
 Problems: 
 \begin{enumerate}
@@ -721,7 +722,7 @@ Problems:
 \begin{small}
 \begin{enumerate}
 \item Well generators (used as defaults a lot) have some initialization overhead.
-How / when to take this hit
+How / when to take this hit?
 \item Distribution classes also have sample() methods, but that makes them dependent on
 generators
 \end{enumerate}
