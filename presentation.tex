@@ -654,6 +654,21 @@ What if one of the arrays contains NaNs?
 \item Default in Spearman's is natural ranking on doubles with ties averaged
 and NaNs disallowed
 \end{itemize}
+\end{small}
+\end{frame}
+
+%-------------- slide -----------------------------------------------%
+\begin{frame}
+  \frametitle{Example 7 - Rank correlation (cont)}
+\begin{small}
+NaNStrategies:
+\begin{itemize}
+\item MINIMAL - NaNs are treated as minimal in the ordering
+\item MAXIMAL - NaNs are treated as maximal in the ordering
+\item REMOVED - NaNs are removed
+\item FIXED - NaNs are left "in place" 
+\item FAILED - NaNs cause NotANumberException
+\end{itemize}
 Problems: 
 \begin{enumerate}
 \item What if user supplies a NaturalRanking with the NaN strategy that says remove NaNs? 
