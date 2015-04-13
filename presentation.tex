@@ -116,9 +116,6 @@ contributor's views.
 %----------- slide --------------------------------------------------%
 \input{in_numbers.tex}
 
-%----------- slide --------------------------------------------------%
-\input{plug.tex}
-
 %--------------------------------------------------------------------%
 \section[Overview]{Quick Tour}
 
@@ -135,8 +132,8 @@ contributor's views.
   \item Continued fractions
   \item Special functions (Beta, Gamma, Bessel, Erf)
   \item Array utilities (norms, normalization, filling, etc)
-  \item Basic combinatorics (binomial coefficients, factorials, Stirling numbers..)
-  \item Basic integer arithmetic (checked operations, gcd, lcm, primality...)
+  \item Basic combinatorics (\(\binom{n}{k}, n!\), Stirling numbers...)
+  \item Basic integer arithmetic (checked ops, gcd, lcm, primality...)
   \item Complex numbers
 \end{itemize}
 \end{small}
@@ -178,11 +175,11 @@ contributor's views.
 
 \begin{small}
 \begin{itemize}
-  \item Probability distributions
+  \item Probability distributions (Gaussian, Exponential, Poisson...)
   \item Random number generators (Well, ISAAC, Mersenne twister...)
-  \item Random data generators (samplers, random vectors, empirical density)
+  \item Random data generators (samplers, random vectors...)
   \item Univariate statistics (storeless and in-memory)
-  \item Regression (storeless bivariate, matrix-based and storeless multivariate)
+  \item Regression (matrix-based and storeless)
   \item Correlation
   \item Inference (T-, G-, ChiSquare, Kolmogorov-Smirnov tests...)  
 \end{itemize}
@@ -258,14 +255,15 @@ Two problems:
   \frametitle{Example 1 - Root finding (cont)}
 
 \begin{small}  
- First problem:  escape to NaN
+ {\fblue{First problem:  escape to NaN}}
 \begin{itemize}
   \item Long and painful history debating C99x Annex G
   \item Desire: clear, self-contained, open documentation
   \item Desire: simple, performant code
   \item Result: use standard definitions and let NaNs propagate
 \end{itemize}
-Second problem: hanging
+
+{\fblue{Second problem: hanging}}
 \begin{itemize}
   \item Ongoing debate about what to make defaults, whether to have defaults at all...
   \item Ease of use vs foot-shooting potential
@@ -304,7 +302,7 @@ distribution functions of the two samples. \\
  \begin{itemize}
   \item The distribution of \(D_{m,n}\) is asymptotically an easy-to-compute distribution
   \item For very small m, n, the distribution can be computed exactly, but expensively
-  \item What to do for mid-size samples (m, n between 100 and 10000)?
+  \item What to do for mid-size samples (\( 100 < m \times n < 10,000\))?
   \item Should this distribution be in the distributions package?
   \item Reference data / correctness very hard to verify
  \end{itemize}
@@ -433,7 +431,7 @@ LeastSquaresOptimizer optim = new LevenbergMarquardtOptimizer( /* ... */ );
 Optimum result = optim.optimize(problem);
 \end{minted}
 
-Yet to be done (before next major release?): Refactor all the other optimizers. 
+Yet to be done: Refactor all the other optimizers. 
 \end{small}
 \end{frame}
 
@@ -904,17 +902,23 @@ Watch for new versions!
 \end{frame}
 
 %----------- slide --------------------------------------------------%
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{How to contribute?}
-
+  
+\begin{small}
 \begin{itemize}
-  \item Check out the user guide \url{http://commons.apache.org/math/userguide/index.html}
-  \item Ask questions on the user mailinglist
-  \item Participate in discussions on the dev mailinglist
+  \item Check out the user guide \url{http://commons.apache.org/math/userguide}
+  \item Ask - and answer - questions on the user mailing list
+  \item Participate in discussions on the dev list
   \item Create bug reports / feature requests / improvements in JIRA
-  \item Send patches (code, documentation, examples)
+  \item Create and submit patches (code, documentation, examples)
+  \item Look at \url{http://commons.apache.org/math/developers.html}
+  \item Run \mintinline{latex}{mvn site} and review CheckStyle, Findbugs reports
+   when creating patches
+  \item Don't be shy asking for help with maven, git, coding style, math ... anything
   \item Provide feedback - most welcome!
 \end{itemize}
+\end{small}
 
 \end{frame}
 
