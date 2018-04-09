@@ -1,10 +1,11 @@
 ## Apachecon NA 2015 Commons Math presentation
 
-Uses Beamer to generate slides from LaTex sources.
+Uses Beamer to generate slides from LaTex sources. Requires python pygments package to format code.
 
 ## Usage
 
-1. make
+ make clean
+ make
 
 Creates a pdf
 
